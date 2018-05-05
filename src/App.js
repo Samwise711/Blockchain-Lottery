@@ -33,6 +33,11 @@ class App extends Component {
     });
 
     this.setState({ message: 'You have been entered!' });
+    const manager = await lottery.methods.manager().call();
+    const players = await lottery.methods.getPlayers().call();
+    const balance = await web3.eth.getBalance(lottery.options.address);
+
+    this.setState({ manager, players, balance });
   };
 
   onClick = async () => {
@@ -45,6 +50,11 @@ class App extends Component {
     });
 
     this.setState({ message: 'A winner has been picked!' });
+    const manager = await lottery.methods.manager().call();
+    const players = await lottery.methods.getPlayers().call();
+    const balance = await web3.eth.getBalance(lottery.options.address);
+
+    this.setState({ manager, players, balance });
   };
 
   render() {
